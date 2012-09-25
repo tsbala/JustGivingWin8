@@ -5,7 +5,7 @@
     <title>JustGivingWin8</title>
 
     <!-- WinJS references -->
-    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <link href="//Microsoft.WinJS.1.0/css/ui-light.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
 
@@ -13,25 +13,29 @@
     <link href="/css/default.css" rel="stylesheet" />
     <script src="/js/jquery-1.8.0.min.js" type="text/javascript"></script>
     <script src="/js/default.js"></script>
+    <script src="/js/navigator.js"></script>
+    <script src="/js/justgiving.js"></script>
+    <script src="/js/data.js"></script>
 </head>
-<body>
+<body role="application">
     <header>
-        <img src="/images/logo.png" alt="JustGiving"/>
-    </header>
-    <section>
-        <input type="text" placeholder="Enter your JustGiving page name"/>
-        <button type="button">Go</button>
-    </section>
-    <section>
-        <div id="fundraising-page-details" />
-    </section>
-
-    <div id="fundraising-page" data-win-control="WinJS.Binding.Template">
-        <div class="templateItem">
-            <h1 data-win-bind="textContent: title"></h1>
-            <p data-win-bind="textContent: charity.name"></p>
-            <img data-win-bind="src: CharityLogoUrl"/>
+        <div class="offset">
+            <img src="/images/logo.png" alt="JustGiving" />
         </div>
+    </header>
+
+    <div id="contentHost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/html/fundraisingpage.html'}"></div>
+
+    <div data-win-control="WinJS.UI.AppBar" id="appBar">
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdAdd',label:'Add',icon:'add',section:'global',tooltip:'Add Fundraising page', type:'flyout', flyout:'fundraisingPageSearchFlyout'}"></button>
+    </div>
+
+    <div id="fundraisingPageSearchFlyout" data-win-control="WinJS.UI.Flyout">
+        <div id="fundraisingPageSearch"></div>
+        <input id="pageNameText" type="text" placeholder="Your JustGiving fundraising page name" /><br />
+        <br />
+        <button id="addPageButton">Go</button><br />
+        <br />
     </div>
 </body>
 </html>

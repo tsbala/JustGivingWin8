@@ -12,3 +12,8 @@
 
 @media screen and (-ms-view-state: fullscreen-portrait) {
 }
+
+.offset {
+    position: relative; 
+    left: 35px;
+}

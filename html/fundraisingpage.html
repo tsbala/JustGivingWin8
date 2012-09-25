@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="/js/data.js"></script>
+    <script src="/js/fundraisingpage.js"></script>
+</head>
+    <body>
+        <div id="fundraising-page-details"></div>
+        <div id="fundraising-page" data-win-control="WinJS.Binding.Template">
+            <div class="templateItem">
+                <h1 data-win-bind="textContent: title"></h1>
+                <div>
+                    <figure>
+                        <img data-win-bind="src: CharityLogoUrl; alt: charity.name"/>
+                    </figure>
+                    <div>
+                        <h3 data-win-bind="textContent: charity.name"></h3>
+                    </div>
+                </div>
+                <div data-win-bind="innerHTML: story"></div>
+            </div>
+        </div>
+    </body>
+</html>
