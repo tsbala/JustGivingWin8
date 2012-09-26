@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>pageTiles</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <link href="/css/pageTiles.css" rel="stylesheet" />
+    <script src="/js/pageTiles.js"></script>
+</head>
+    <body>
+        <div id="fundraising-page-listview" 
+             data-win-control="WinJS.UI.ListView"
+             data-win-options="{ itemDataSource: PagesList.Pages.dataSource, layout: { type: WinJS.UI.GridLayout, maxRows: 3 } }"></div>
+        <div id="fundraising-page-tile" data-win-control="WinJS.Binding.Template">
+            <div class="page">
+                <img src="#" data-win-bind="src: CharityLogoUrl; alt: charity.name" />
+                <div class="page-overlay">
+                    <div class="page-title win-type-ellipsis" data-win-bind="innerText: title"></div>
+                    <h6 class="page-owner" data-win-bind="innerText: owner"></h6>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

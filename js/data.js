@@ -6,7 +6,9 @@
         var settings = Windows.Storage.ApplicationData.current.roamingSettings;
         
         function addPage(pageName) {
-            pages.push(pageName);
+            if (pages.indexOf(pageName) === -1) {
+                pages.push(pageName);
+            }
         }
 
         function recentPagesAsJson() {
@@ -23,6 +25,10 @@
             }
 
             return undefined;
+        }
+
+        function allPages() {
+            return pages;
         }
         
         function saveToRoamingData() {
@@ -45,7 +51,8 @@
             FromJson: loadPages,
             GetFirstItem: getFirstItem,
             SaveToRoamingData: saveToRoamingData,
-            LoadFromRoamingData: loadFromRoamingData
+            LoadFromRoamingData: loadFromRoamingData,
+            AllPages: allPages
         };
     }();
 

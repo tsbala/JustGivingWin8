@@ -9,10 +9,11 @@ JustGivingWinJS.GetFundraisingPage = function (pageShortUrl) {
     return WinJS.xhr({ url: url, headers: { 'content-type': 'application/json' } });
 };
 
-JustGivingWinJS.DisplayFundraisingPageDetails = function (data) {
-    var template = document.getElementById('fundraising-page');
-    var renderElement = document.getElementById('fundraising-page-details');
+JustGivingWinJS.DisplayFundraisingPageDetails = function (data, templateId, elementId) {
+    var template = document.getElementById(templateId);
+    var renderElement = elementId ? document.getElementById(elementId) : document.createElement('div');
     var page = JSON.parse(data.responseText);
-    page.CharityLogoUrl = 'http://www.justgiving.com/Utils/Imaging.ashx?width=120&imageType=charitybrandinglogo&img=' + page.charity.logoUrl;
+    page.CharityLogoUrl = 'http://www.justgiving.com/Utils/Imaging.ashx?width=200&imageType=charitybrandinglogo&img=' + page.charity.logoUrl;
     template.winControl.render(page, renderElement);
+    return renderElement;
 };

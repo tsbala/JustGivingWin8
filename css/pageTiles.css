@@ -1,0 +1,43 @@
+﻿.pageTiles p {
+    margin-left: 120px;
+}
+
+
+.fundraising-page-listview {
+    width: 1366px; /* +31 px to account for margins applied by ListView */
+}
+
+.page {
+    width: 200px; 
+    height: 200px;
+    display: -ms-grid;
+    overflow: hidden;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+}
+
+.page .page-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.page .page-overlay {
+    -ms-grid-row-align: end;
+    background-color: rgba(0,0,0,0.65);
+    height: 50px;
+    overflow: hidden;
+    padding: 0px 10px 0px 10px;
+}
+
+.page .page-overlay .page-title {
+    margin-top: 5px;
+    color: rgb(255,255,255);
+    height: 20px;
+}
+
+.page .page-overlay .page-owner {
+    margin-top: 5px;
+    height: 20px;
+    color: rgba(255,255,255,0.49);
+}
