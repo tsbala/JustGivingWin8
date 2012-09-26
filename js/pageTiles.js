@@ -7,10 +7,10 @@
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
+            addPageEventhandler();
             var listView = document.getElementById('fundraising-page-listview');
             listView.winControl.itemTemplate = pageTemplateFunction;
         },
-
     });
 
     var pageTemplateFunction = function(pagePromise) {
@@ -21,10 +21,27 @@
                 });
         });
     };
+    
+    function addPageEventhandler() {
+        document.getElementById("addPageButton").addEventListener("click", function() {
+            var pageName = pageNameText.value;
+            if (pageName) {
+                JustGivingWinJS.RecentPages.AddPage(pageName);
+                JustGivingWinJS.RecentPages.SaveToRoamingData();
+                PagesList.Pages.push(pageName);
+                document.getElementById('fundraisingPageSearchFlyout').winControl.hide();
+            }
+            
+        });
+    }
+
  
     var pagesList = function () {
         var pages = JustGivingWinJS.RecentPages.AllPages();
-        var list = new WinJS.Binding.List(pages);
+        var list = new WinJS.Binding.List();
+        pages.forEach(function(item) {
+            list.dataSource.insertAtEnd(null, item);
+        });
         
         return {
             Pages: list

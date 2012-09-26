@@ -23,6 +23,7 @@
                 }));
         }
     });
+    
 
     app.oncheckpoint = function (args) {
         JustGivingWinJS.RecentPages.SaveToRoamingData();
