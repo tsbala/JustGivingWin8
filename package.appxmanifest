@@ -17,7 +17,7 @@
     <Application Id="App" StartPage="default.html">
       <VisualElements DisplayName="JustGiving" Logo="images\JG-logo-150x150.png" SmallLogo="images\JG-G-30x30.png" Description="JustGiving" ForegroundText="light" BackgroundColor="#464646">
         <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="images\JG-logo-620x300.png" />
+        <SplashScreen Image="images\JG-logo-620x300.png" BackgroundColor="white" />
       </VisualElements>
       <Extensions>
         <Extension Category="windows.search" />

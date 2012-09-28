@@ -2,13 +2,13 @@
 // http://go.microsoft.com/fwlink/?LinkId=232511
 (function () {
     "use strict";
-
     WinJS.UI.Pages.define("/html/pageTiles.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
-            addPageEventhandler();
             var listView = document.getElementById('fundraising-page-listview');
+            addPageEventhandler();
+            pageSelectedEventHandler(listView);
             listView.winControl.itemTemplate = pageTemplateFunction;
         },
     });
@@ -32,6 +32,16 @@
                 document.getElementById('fundraisingPageSearchFlyout').winControl.hide();
             }
             
+        });
+    }
+
+    function pageSelectedEventHandler(listView) {
+        listView.winControl.addEventListener('selectionchanged', function(evt) {
+            if (listView.winControl.selection.count() > 0) {
+                listView.winControl.selection.getItems().then(function(items) {
+                    WinJS.Navigation.navigate("/html/fundraisingpage.html", items[0].data);
+                });
+            }
         });
     }
 

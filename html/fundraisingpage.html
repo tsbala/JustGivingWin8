@@ -7,10 +7,15 @@
     <script src="/js/fundraisingpage.js"></script>
 </head>
     <body>
+        <header role="banner">
+            <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
+            <h1 class="win-type-ellipsis">
+                <span class="pageTitle"></span>
+            </h1>        
+        </header>
         <div id="fundraising-page-details"></div>
         <div id="fundraising-page" data-win-control="WinJS.Binding.Template">
             <div class="templateItem">
-                <h1 data-win-bind="textContent: title"></h1>
                 <div>
                     <figure>
                         <img data-win-bind="src: CharityLogoUrl; alt: charity.name"/>

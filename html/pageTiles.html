@@ -15,7 +15,7 @@
     <body>
         <div id="fundraising-page-listview" 
              data-win-control="WinJS.UI.ListView"
-             data-win-options="{ itemDataSource: PagesList.Pages.dataSource, layout: { type: WinJS.UI.GridLayout, maxRows: 3 } }"></div>
+             data-win-options="{ itemDataSource: PagesList.Pages.dataSource, tapBehavior: 'directSelect', selectionMode: 'single', layout: { type: WinJS.UI.GridLayout } }"></div>
         <div id="fundraising-page-tile" data-win-control="WinJS.Binding.Template">
             <div class="page">
                 <img src="#" data-win-bind="src: CharityLogoUrl; alt: charity.name" />
