@@ -19,6 +19,6 @@ JustGivingWinJS.DisplayFundraisingPageDetails = function (data, templateId, elem
 
 JustGivingWinJS.PageObjectFromResponse = function (data) {
     var page = JSON.parse(data.responseText);
-    page.CharityLogoUrl = 'http://www.justgiving.com/Utils/Imaging.ashx?width=200&imageType=charitybrandinglogo&img=' + page.charity.logoUrl;
+    page.CharityLogoUrl = 'http://www.justgiving.com/Utils/Imaging.ashx?width=120&imageType=charitybrandinglogo&img=' + page.charity.logoUrl;
     return page;
 }

@@ -3,28 +3,38 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link href="/css/fundraisingpage.css" rel="stylesheet" />
     <script src="/js/data.js"></script>
     <script src="/js/fundraisingpage.js"></script>
 </head>
     <body>
-        <header role="banner">
-            <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
-            <h1 class="win-type-ellipsis">
-                <span class="pageTitle"></span>
-            </h1>        
+        <header role="banner" style="display: -ms-grid;-ms-grid-colums:1fr;-ms-grid-rows:1fr">
+            <button class="win-backbutton" aria-label="Back" disabled type="button" style="-ms-grid-column: 1;margin-right: 15px"></button>
+            <h1 class="win-type-ellipsis pageTitle" style="-ms-grid-column: 2;-ms-grid-row-align: center; margin-top: -25px">
+            </h1>
         </header>
         <div id="fundraising-page-details"></div>
         <div id="fundraising-page" data-win-control="WinJS.Binding.Template">
             <div class="templateItem">
-                <div>
-                    <figure>
-                        <img data-win-bind="src: CharityLogoUrl; alt: charity.name"/>
-                    </figure>
-                    <div>
-                        <h3 data-win-bind="textContent: charity.name"></h3>
+                <div class="panel1">
+                    <div class="mycharity">
+                        <h2 style="-ms-grid-row: 1">My Charity</h2>
+                        <div style="-ms-grid-row: 2">
+                            <div style="display: -ms-grid; -ms-grid-rows: 1fr; -ms-grid-columns: auto 1fr">
+                                <figure style="-ms-grid-column: 1; margin-left: -2px">
+                                    <img data-win-bind="src: CharityLogoUrl; alt: charity.name"/>
+                                </figure>
+                                <div style="-ms-grid-column: 2">
+                                    <p data-win-bind="innerHTML: charity.description"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mystory">
+                        <h2 style="-ms-grid-row: 1">My Story</h2>
+                        <h3 style="-ms-grid-row: 2; height: 100px" data-win-bind="innerHTML: story"></h3>
                     </div>
                 </div>
-                <div data-win-bind="innerHTML: story"></div>
             </div>
         </div>
     </body>

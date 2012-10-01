@@ -53,6 +53,7 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="css\fundraisingpage.css" />
     <Content Include="css\pageTiles.css" />
     <Content Include="default.html" />
     <Content Include="html\fundraisingpage.html" />

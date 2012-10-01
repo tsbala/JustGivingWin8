@@ -1,0 +1,29 @@
+﻿.templateItem h2 {
+    font-size: 100%;
+    font-weight: bold;
+    padding-bottom: 12px;
+    border-bottom: 3px solid crimson;
+}
+
+.templateItem .panel1 {
+    width: 650px; 
+    display: -ms-grid;
+    -ms-grid-rows: 2fr; 
+    -ms-grid-rows: 1fr
+}
+
+.templateItem .panel1 .mycharity {
+    -ms-grid-row: 1;
+    display: -ms-grid;
+    -ms-grid-rows: 2fr;
+    -ms-grid-columns: 1fr;
+    width: 100%;
+}
+
+.templateItem .panel1 .mystory{
+    -ms-grid-row: 2;
+    display: -ms-grid;
+    -ms-grid-rows: 2fr;
+    -ms-grid-columns: 1fr;
+    width: 100%;
+}
