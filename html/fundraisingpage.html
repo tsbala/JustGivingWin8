@@ -42,10 +42,10 @@
                     </div>
                 </div>
                 <div class="panel2">
-                    <h2>Donations</h2>
+                    <h2 style="-ms-grid-row: 1">Donations</h2>
                     <div id="donations-listview"
                          data-win-control="WinJS.UI.ListView"
-                         data-win-options="{ layout: { type: WinJS.UI.ListLayout }}">
+                         data-win-options="{ layout: { type: WinJS.UI.ListLayout }, itemTemplate: select('#donation-template') }">
                     </div>
                 </div>
             </div>
@@ -60,11 +60,16 @@
         
         <div id="donation-template" data-win-control="WinJS.Binding.Template">
              <div class="donationItem">
-                 <div>
-                     <div data-win-bind="innerText: donorDisplayName"></div>
-                     <div data-win-bind="innerText: donationDate"></div>
+                 <div class="avatar">
+                    <img src='#' data-win-bind="src: imageUrl" ></img>
                  </div>
-                 <div data-win-bind="innerText: message"></div>
+                 <div class="details">
+                     <div data-win-bind="innerText: message"></div>
+                     <span data-win-bind="innerText: donorDisplayName"></span> on <span data-win-bind="innerText: DonationDate"></span>
+                 </div>
+                 <div class="amount">
+                     <span data-win-bind="innerText: AmountFormatted"></span>
+                 </div>
              </div>
         </div>
     </body>

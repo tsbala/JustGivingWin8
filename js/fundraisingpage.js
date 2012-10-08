@@ -16,11 +16,13 @@
                     imagesListView.winControl.itemTemplate = imageGalleryTemplate;
 
                     JustGivingWinJS.DonationForPage(pageUrl)
-                        .then(function(response) {
+                        .then(function(response){ 
                             var donationsList = JSON.parse(response.responseText);
                             WinJS.Namespace.define("Donations", donations(donationsList.donations));
+                        })
+                        .done(function () {
                             var donationsListView = document.getElementById('donations-listview');
-                            donationsListView.winControl.itemTemplate = donationItemTemplate;
+                            donationsListView.winControl.itemDataSource = Donations.List.dataSource;
                         });
                 });
         }
@@ -35,15 +37,6 @@
         });
     }
     
-    function donationItemTemplate(donationsPromise) {
-        donationsPromise.then(function(donation) {
-            var template = document.getElementById('donation-template');
-            var renderDiv = document.createElement('div');
-            template.winControl.render(donation.data, renderDiv);
-            return renderDiv;
-        });
-    }
- 
     WinJS.Namespace.define("FundraisingPage", {
         FundraisingPageControl: fundraisingPage
     });
@@ -61,10 +54,18 @@
     };
 
 
-    var donations = function(donations) {
+    var donations = function (donationItems) {
         var list = new WinJS.Binding.List();
-        donations.forEach(function(donation) {
-            list.dataSource.insertAtEnd(donation);
+        donationItems.forEach(function (donation) {
+            var dateFormat = Windows.Globalization.DateTimeFormatting.DateTimeFormatter.shortDate;
+            donation.DonationDate = dateFormat.format(new Date(parseInt(donation.donationDate.substr(6))));
+            if (!donation.image) {
+                donation.image = 'facebook-avatar.gif';
+            }
+            donation.imageUrl = 'http://www.justgiving.com/content/images/graphics/icons/avatars/' + donation.image;
+            var currencyFormatter = Windows.Globalization.NumberFormatting.CurrencyFormatter("GBP");
+            donation.AmountFormatted = currencyFormatter.format(donation.amount);
+            list.dataSource.insertAtEnd(null, donation);
         });
 
         return {

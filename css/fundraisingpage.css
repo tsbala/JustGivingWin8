@@ -23,7 +23,8 @@
     -ms-grid-column: 2;
     height: auto; 
     display: -ms-grid;
-    -ms-grid-columns: 1fr
+    -ms-grid-rows: 24px auto;
+    -ms-grid-columns: 1fr;
 }
 
 .templateItem .panel1 .mycharity {
@@ -71,4 +72,31 @@
     padding: 0px 5px 0px 5px;
 }
 
+.templateItem .panel2 div {
+    -ms-grid-row: 2;
+}
 
+.templateItem .panel2 .donationItem {
+    display: -ms-grid;
+    -ms-grid-columns: 60px 1fr 60px;
+    -ms-grid-rows: 1fr;
+}
+
+.templateItem .panel2 .donationItem .avatar {
+    -ms-grid-column: 1;
+    padding: 5px;
+}
+
+.templateItem .panel2 .donationItem .details {
+    -ms-grid-column: 2;
+}
+
+.templateItem .panel2 .donationItem .details span {
+    -ms-grid-column-align: end;
+    font-size: 75%;
+}
+
+
+.templateItem .panel2 .donationItem .amount {
+    -ms-grid-column: 3;
+}
