@@ -32,10 +32,40 @@
                     </div>
                     <div class="mystory">
                         <h2 style="-ms-grid-row: 1">My Story</h2>
-                        <h3 style="-ms-grid-row: 2; height: 100px" data-win-bind="innerHTML: story"></h3>
+                        <p style="-ms-grid-row: 2; overflow: hidden" data-win-bind="innerHTML: story"></p>
+                    </div>
+                    <div class="mymedia">
+                        <h2 style="-ms-grid-row: 1">My Gallery</h2>
+                        <div id="gallery-listview" 
+                             data-win-control="WinJS.UI.ListView"
+                             data-win-options="{ itemDataSource: MediaList.Images.dataSource, tapBehavior: 'directSelect', selectionMode: 'single', layout: { type: WinJS.UI.GridLayout } }"></div>
+                    </div>
+                </div>
+                <div class="panel2">
+                    <h2>Donations</h2>
+                    <div id="donations-listview"
+                         data-win-control="WinJS.UI.ListView"
+                         data-win-options="{ layout: { type: WinJS.UI.ListLayout }}">
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <div id="image-template" data-win-control="WinJS.Binding.Template">
+            <div class="imageGallery">
+                <img src="#" data-win-bind="src: absoluteUrl" />
+                <div class="image-caption win-type-ellipsis" data-win-bind="innerText: caption"></div>
+            </div>
+        </div>
+        
+        <div id="donation-template" data-win-control="WinJS.Binding.Template">
+             <div class="donationItem">
+                 <div>
+                     <div data-win-bind="innerText: donorDisplayName"></div>
+                     <div data-win-bind="innerText: donationDate"></div>
+                 </div>
+                 <div data-win-bind="innerText: message"></div>
+             </div>
         </div>
     </body>
 </html>

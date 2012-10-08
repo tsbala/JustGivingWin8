@@ -17,8 +17,25 @@ JustGivingWinJS.DisplayFundraisingPageDetails = function (data, templateId, elem
     return renderElement;
 };
 
-JustGivingWinJS.PageObjectFromResponse = function (data) {
+JustGivingWinJS.PageObjectFromResponse = function(data) {
     var page = JSON.parse(data.responseText);
-    page.CharityLogoUrl = 'http://www.justgiving.com/Utils/Imaging.ashx?width=120&imageType=charitybrandinglogo&img=' + page.charity.logoUrl;
+    page.CharityLogoUrl = JustGivingWinJS.ImageUrlFromImage(page.charity.logoUrl, 'charity');
     return page;
-}
+};
+
+JustGivingWinJS.ImageUrlFromImage = function(url, imageType) {
+    switch (imageType) {
+    case 'charity':
+        return 'http://www.justgiving.com/Utils/Imaging.ashx?width=120&imageType=charitybrandinglogo&img=' + url;
+    case 'media':
+        return 'http://www.justgiving.com/Utils/imaging.ashx?width=65&imageType=frpphoto&img=' + url;
+    default:
+        return url;
+    }
+};
+
+JustGivingWinJS.DonationForPage = function(pageShortUrl) {
+    var url = 'https://api.justgiving.com/' + JustGivingWinJS.ApiKey + '/v1/fundraising/pages/' + pageShortUrl + '/donations';
+    return WinJS.xhr({ url: url, headers: { 'content-type': 'application/json' } });
+};
+

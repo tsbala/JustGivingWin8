@@ -1,4 +1,10 @@
-﻿.templateItem h2 {
+﻿.templateItem {
+    display: -ms-grid;
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 1fr 1fr;
+}
+
+.templateItem h2 {
     font-size: 100%;
     font-weight: bold;
     padding-bottom: 12px;
@@ -6,10 +12,18 @@
 }
 
 .templateItem .panel1 {
-    width: 650px; 
+    -ms-grid-column: 1;
+    height: auto; 
     display: -ms-grid;
     -ms-grid-rows: 2fr; 
-    -ms-grid-rows: 1fr
+    -ms-grid-columns: 1fr
+}
+
+.templateItem .panel2 {
+    -ms-grid-column: 2;
+    height: auto; 
+    display: -ms-grid;
+    -ms-grid-columns: 1fr
 }
 
 .templateItem .panel1 .mycharity {
@@ -23,7 +37,38 @@
 .templateItem .panel1 .mystory{
     -ms-grid-row: 2;
     display: -ms-grid;
-    -ms-grid-rows: 2fr;
-    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr 200px;
+    -ms-grid-columns: auto;
     width: 100%;
 }
+
+.templateItem .panel1 .mymedia{
+    -ms-grid-row: 3;
+}
+
+#gallery-listview {
+    width: auto;
+    height: 120px;
+}
+
+.imageGallery {
+    display: -ms-grid;
+    -ms-grid-rows: 100px;
+    -ms-grid-columns: 100px;
+}
+
+.imageGallery img {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+}
+
+.imageGallery .image-caption {
+    -ms-grid-row-align: end;
+    font-size: 75%;
+    background-color: rgba(0,0,0,0.65);
+    height: 25px;
+    overflow: hidden;
+    padding: 0px 5px 0px 5px;
+}
+
+
