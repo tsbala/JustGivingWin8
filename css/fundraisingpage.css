@@ -78,7 +78,7 @@
     -ms-grid-column-align: center;
     display: -ms-grid;
     -ms-grid-rows: 1fr;
-    -ms-grid-columns: 1fr 1fr 1fr;
+    -ms-grid-columns: 50px auto 77px;
 }
 
 .templateItem .panel2 #donations-pager #current-page{
@@ -89,6 +89,7 @@
 
 .templateItem .panel2 #donations-pager .prev-page {
     -ms-grid-column: 1;
+    color: crimson;
 }
 
 .templateItem .panel2 #donations-pager .next-page {
@@ -96,6 +97,7 @@
     -ms-grid-column-align: end;
     -ms-grid-row-align: center;
     font-size: 14pt;
+    color: crimson;
 }
 
 .templateItem .panel2 #donations-listview {
