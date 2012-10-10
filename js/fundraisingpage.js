@@ -47,7 +47,7 @@
     function getPreviousPageOfDonations() {
         if (Donations.CurrentPageNumber !== 1)
         {
-            displaySinglePageOfDonations(Donations.PageUrl, Donations.CurrentPageNumber + 1);
+            displaySinglePageOfDonations(Donations.PageUrl, Donations.CurrentPageNumber - 1);
         }
     }
 
