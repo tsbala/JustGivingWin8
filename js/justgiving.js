@@ -37,7 +37,7 @@ JustGivingWinJS.ImageUrlFromImage = function(url, imageType) {
 JustGivingWinJS.DonationForPage = function (pageShortUrl, pageNumber) {
     var url = 'https://api.justgiving.com/' + JustGivingWinJS.ApiKey + '/v1/fundraising/pages/' + pageShortUrl + '/donations?pageSize=5';
     if (pageNumber) {
-        url = url + '&pageNumber=' + pageNumber;
+        url = url + '&pageNum=' + pageNumber;
     }
     return WinJS.xhr({ url: url, headers: { 'content-type': 'application/json' } });
 };
