@@ -14,20 +14,49 @@
                     JustGivingWinJS.DisplayFundraisingPageDetails(data, 'fundraising-page', 'fundraising-page-details');
                     var imagesListView = document.getElementById('gallery-listview');
                     imagesListView.winControl.itemTemplate = imageGalleryTemplate;
-
-                    JustGivingWinJS.DonationForPage(pageUrl)
-                        .then(function(response){ 
-                            var donationsList = JSON.parse(response.responseText);
-                            document.getElementById('current-page').innerText = "Page " + donationsList.pagination.pageNumber + ' of ' + donationsList.pagination.totalPages;
-                            WinJS.Namespace.define("Donations", donations(donationsList.donations));
-                        })
-                        .done(function () {
-                            var donationsListView = document.getElementById('donations-listview');
-                            donationsListView.winControl.itemDataSource = Donations.List.dataSource;
-                        });
+                    singlePageOfDonations(pageUrl);
                 });
         }
     });
+    
+    function singlePageOfDonations(pageUrl) {
+        displaySinglePageOfDonations(pageUrl);
+
+        document.getElementsByClassName('prev-page')[0].addEventListener('click', function(e) {
+            getPreviousPageOfDonations();
+        });
+        
+        document.getElementsByClassName('next-page')[0].addEventListener('click', function (e) {
+            getNextPageOfDonations();
+        });
+    }
+
+    function displaySinglePageOfDonations(pageUrl, pageNumber) {
+        JustGivingWinJS.DonationForPage(pageUrl, pageNumber)
+            .then(function (response) {
+                var donationsList = JSON.parse(response.responseText);
+                WinJS.Namespace.define("Donations", donations(donationsList));
+            })
+            .done(function () {
+                var donationsListView = document.getElementById('donations-listview');
+                document.getElementById('current-page').innerText = "Page " + Donations.CurrentPageNumber + ' of ' + Donations.TotalPages;
+                donationsListView.winControl.itemDataSource = Donations.List.dataSource;
+            });
+    }
+    
+    function getPreviousPageOfDonations() {
+        if (Donations.CurrentPageNumber !== 1)
+        {
+            displaySinglePageOfDonations(Donations.PageUrl, Donations.CurrentPageNumber + 1);
+        }
+    }
+
+    function getNextPageOfDonations() {
+        if (Donations.CurrentPageNumber !== Donations.TotalPages)
+        {
+            displaySinglePageOfDonations(Donations.PageUrl, Donations.CurrentPageNumber + 1);
+        }
+    }
     
     function imageGalleryTemplate(imagesPromise) {
         return imagesPromise.then(function (image) {
@@ -55,9 +84,9 @@
     };
 
 
-    var donations = function (donationItems) {
+    var donations = function (donationsObject) {
         var list = new WinJS.Binding.List();
-        donationItems.forEach(function (donation) {
+        donationsObject.donations.forEach(function (donation) {
             var dateFormat = Windows.Globalization.DateTimeFormatting.DateTimeFormatter.shortDate;
             donation.DonationDate = dateFormat.format(new Date(parseInt(donation.donationDate.substr(6))));
             if (!donation.image) {
@@ -70,7 +99,10 @@
         });
 
         return {
-            List: list
+            List: list,
+            CurrentPageNumber: donationsObject.pagination.pageNumber,
+            TotalPages: donationsObject.pagination.totalPages,
+            PageUrl: donationsObject.id
         };
     };
     

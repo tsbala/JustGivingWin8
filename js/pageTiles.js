@@ -17,7 +17,9 @@
         return pagePromise.then(function (page) {
             return JustGivingWinJS.GetFundraisingPage(page.data)
                 .then(function (data) {
-                     return JustGivingWinJS.DisplayFundraisingPageDetails(data, "fundraising-page-tile");
+                    return JustGivingWinJS.DisplayFundraisingPageDetails(data, "fundraising-page-tile");
+                }, function (error) {
+                    return error;
                 });
         });
     };
