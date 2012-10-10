@@ -18,6 +18,7 @@
                     JustGivingWinJS.DonationForPage(pageUrl)
                         .then(function(response){ 
                             var donationsList = JSON.parse(response.responseText);
+                            document.getElementById('current-page').innerText = "Page " + donationsList.pagination.pageNumber + ' of ' + donationsList.pagination.totalPages;
                             WinJS.Namespace.define("Donations", donations(donationsList.donations));
                         })
                         .done(function () {
