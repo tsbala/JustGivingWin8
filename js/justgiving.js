@@ -23,6 +23,8 @@ JustGivingWinJS.PageObjectFromResponse = function(data) {
     return page;
 };
 
+
+
 JustGivingWinJS.ImageUrlFromImage = function(url, imageType) {
     switch (imageType) {
     case 'charity':

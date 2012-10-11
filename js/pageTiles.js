@@ -12,15 +12,28 @@
             listView.winControl.itemTemplate = pageTemplateFunction;
         },
     });
-
+    /*
+    window.addEventListener('resize', function(e) {
+        var currentViewState = Windows.UI.ViewManagement.ApplicationView.value;
+        var snapped = Windows.UI.ViewManagement.ApplicationViewState.snapped;
+        var listView = document.getElementById('fundraising-page-listview');
+        
+        if (currentViewState === snapped) {
+            listView.layout = WinJS.UI.ListLayout();
+        }
+        else {
+            listView.layout = WinJS.UI.GridLayout();
+        }
+    });
+    */
     var pageTemplateFunction = function(pagePromise) {
         return pagePromise.then(function (page) {
             return JustGivingWinJS.GetFundraisingPage(page.data)
                 .then(function (data) {
-                    return JustGivingWinJS.DisplayFundraisingPageDetails(data, "fundraising-page-tile");
-                }, function (error) {
-                    return error;
-                });
+                        return JustGivingWinJS.DisplayFundraisingPageDetails(data, "fundraising-page-tile");
+                      }, 
+                      function (error) {
+                      });
         });
     };
     

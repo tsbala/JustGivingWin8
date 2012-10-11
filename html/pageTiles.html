@@ -26,5 +26,16 @@
             </div>
         </div>
         
+        <div data-win-control="WinJS.UI.AppBar" id="appBar">
+            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdAdd',label:'Add',icon:'add',section:'global',tooltip:'Add Fundraising page', type:'flyout', flyout:'fundraisingPageSearchFlyout'}"></button>
+        </div>
+
+        <div id="fundraisingPageSearchFlyout" data-win-control="WinJS.UI.Flyout">
+            <div id="fundraisingPageSearch"></div>
+            <input id="pageNameText" type="text" placeholder="Your JustGiving fundraising page name" /><br />
+            <br />
+            <button id="addPageButton">Go</button><br />
+            <br />
+        </div>
     </body>
 </html>
