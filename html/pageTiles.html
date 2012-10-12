@@ -13,19 +13,25 @@
     <script src="/js/pageTiles.js"></script>
 </head>
     <body>
-        <div id="fundraising-page-listview" 
-             data-win-control="WinJS.UI.ListView"
-             data-win-options="{ itemDataSource: PagesList.Pages.dataSource, tapBehavior: 'directSelect', selectionMode: 'single', layout: { type: WinJS.UI.GridLayout } }"></div>
+        <section id="pageTilesSection" >
+            <div id="fundraising-page-listview" 
+                 class="win-selectionstylefilled"
+                 data-win-control="WinJS.UI.ListView"
+                 data-win-options="{ itemDataSource: PagesList.Pages.dataSource, tapBehavior: 'directSelect', selectionMode: 'single', layout: { type: WinJS.UI.GridLayout } }"></div>
+        </section>
+        
         <div id="fundraising-page-tile" data-win-control="WinJS.Binding.Template">
             <div class="page">
-                <img src="#" data-win-bind="src: CharityLogoUrl; alt: charity.name" />
+                <div class="page-logo">
+                    <img src="#" data-win-bind="src: CharityLogoUrl; alt: charity.name" />
+                </div>
                 <div class="page-overlay">
                     <div class="page-title win-type-ellipsis" data-win-bind="innerText: title"></div>
                     <h6 class="page-owner" data-win-bind="innerText: owner"></h6>
                 </div>
             </div>
         </div>
-        
+
         <div data-win-control="WinJS.UI.AppBar" id="appBar">
             <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdAdd',label:'Add',icon:'add',section:'global',tooltip:'Add Fundraising page', type:'flyout', flyout:'fundraisingPageSearchFlyout'}"></button>
         </div>

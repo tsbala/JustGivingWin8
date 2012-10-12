@@ -1,19 +1,22 @@
-﻿.pageTiles p {
-    margin-left: 120px;
+﻿#pageTilesSection {
+    width: 100%;
+    height: 100%;
 }
 
 .fundraising-page-listview {
-    width: 100vw;
-    height: 100vh;
 }
 
 .page {
-    width: 200px; 
-    height: 200px;
+    height: 250px;
+    width: 150px;
     display: -ms-grid;
     overflow: hidden;
     -ms-grid-columns: 1fr;
-    -ms-grid-rows: 1fr;
+    -ms-grid-rows: minmax(200, max-content) 50px;
+}
+
+.page .page-logo {
+    -ms-grid-row: 1;
 }
 
 .page .page-image {
@@ -23,6 +26,7 @@
 }
 
 .page .page-overlay {
+    -ms-grid-row: 2;
     -ms-grid-row-align: end;
     background-color: rgba(0,0,0,0.65);
     height: 50px;
@@ -42,6 +46,20 @@
     color: rgba(255,255,255,0.49);
 }
 
-@media (-ms-view-state: snapped) {
-    
+@media screen and (-ms-view-state: snapped) {
+    #pageTilesSection {
+       width: 300px;
+    }
+
+   .fundraising-page-listview {
+       width: 280px;
+    }
+
+    .page {
+        display: -ms-grid;
+        -ms-grid-columns: 1fr;
+        -ms-grid-rows: 1fr;
+        height: 200px;
+        width: 200px;
+    }
 }

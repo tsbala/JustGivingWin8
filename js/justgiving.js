@@ -28,7 +28,7 @@ JustGivingWinJS.PageObjectFromResponse = function(data) {
 JustGivingWinJS.ImageUrlFromImage = function(url, imageType) {
     switch (imageType) {
     case 'charity':
-        return 'http://www.justgiving.com/Utils/Imaging.ashx?width=120&imageType=charitybrandinglogo&img=' + url;
+        return 'http://www.justgiving.com/Utils/Imaging.ashx?width=100&imageType=charitybrandinglogo&img=' + url;
     case 'media':
         return 'http://www.justgiving.com/Utils/imaging.ashx?width=65&imageType=frpphoto&img=' + url;
     default:
