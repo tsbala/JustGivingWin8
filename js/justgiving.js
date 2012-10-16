@@ -20,7 +20,16 @@ JustGivingWinJS.DisplayFundraisingPageDetails = function (data, templateId, elem
 JustGivingWinJS.PageObjectFromResponse = function(data) {
     var page = JSON.parse(data.responseText);
     page.CharityLogoUrl = JustGivingWinJS.ImageUrlFromImage(page.charity.logoUrl, 'charity');
+    page.PageImage = JustGivingWinJS.ImageUrlFromImage(page.media.images[0].url, 'media');
+    page.Target = JustGivingWinJS.FormatCurrency(page.fundraisingTarget);
+    var totalRaised = parseFloat(page.totalRaisedOffline) + parseFloat(page.totalRaisedOnline) + parseFloat(page.totalRaisedSms);
+    page.TotalRaised = JustGivingWinJS.FormatCurrency(totalRaised);
     return page;
+};
+
+JustGivingWinJS.FormatCurrency = function(amount) {
+    var currencyFormatter = Windows.Globalization.NumberFormatting.CurrencyFormatter("GBP");
+    return currencyFormatter.format(amount);
 };
 
 
@@ -30,7 +39,7 @@ JustGivingWinJS.ImageUrlFromImage = function(url, imageType) {
     case 'charity':
         return 'http://www.justgiving.com/Utils/Imaging.ashx?width=100&imageType=charitybrandinglogo&img=' + url;
     case 'media':
-        return 'http://www.justgiving.com/Utils/imaging.ashx?width=65&imageType=frpphoto&img=' + url;
+        return 'http://www.justgiving.com/Utils/imaging.ashx?width=160&height=160&imageType=frpphoto&img=' + url;
     default:
         return url;
     }

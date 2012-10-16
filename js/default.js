@@ -18,12 +18,19 @@
 
             args.setPromise(WinJS.UI.processAll()
                 .then(function () {
+                    var url = WinJS.Application.sessionState.lastUrl;
+                    if (url) {
+                        return nav.navigate(url);
+                    }
                     JustGivingWinJS.RecentPages.LoadFromRoamingData();
                     return nav.navigate(Application.navigator.home);
                 }));
         }
     });
     
+    WinJS.Navigation.addEventListener("navigated", function (eventObject) {
+        WinJS.Application.sessionState.lastUrl = eventObject.detail.location;
+    });
 
     app.oncheckpoint = function (args) {
         JustGivingWinJS.RecentPages.SaveToRoamingData();

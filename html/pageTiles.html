@@ -15,7 +15,7 @@
     <body>
         <section id="pageTilesSection" >
             <div id="fundraising-page-listview" 
-                 class="win-selectionstylefilled"
+                 class="win-selectionstylefilled win-vertical win-viewport"
                  data-win-control="WinJS.UI.ListView"
                  data-win-options="{ itemDataSource: PagesList.Pages.dataSource, tapBehavior: 'directSelect', selectionMode: 'single', layout: { type: WinJS.UI.GridLayout } }"></div>
         </section>
@@ -23,11 +23,18 @@
         <div id="fundraising-page-tile" data-win-control="WinJS.Binding.Template">
             <div class="page">
                 <div class="page-logo">
-                    <img src="#" data-win-bind="src: CharityLogoUrl; alt: charity.name" />
+                    <img src="#" data-win-bind="src: PageImage; alt: title" />
+                    <h2 class="title" data-win-bind="innerText: title"></h2>
                 </div>
                 <div class="page-overlay">
-                    <div class="page-title win-type-ellipsis" data-win-bind="innerText: title"></div>
-                    <h6 class="page-owner" data-win-bind="innerText: owner"></h6>
+                    <h2 class="win-type-small" data-win-bind="innerText: title"></h2>
+                    <h3>
+                        <span>Target: </span><span data-win-bind="innerText: Target"></span>
+                    </h3>
+                    <h3>
+                        <span>Total raised: </span><span data-win-bind="innerText: TotalRaised"></span>
+                    </h3>
+                    <h6  data-win-bind="innerText: owner"></h6>
                 </div>
             </div>
         </div>

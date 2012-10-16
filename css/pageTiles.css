@@ -1,65 +1,86 @@
 ﻿#pageTilesSection {
-    width: 100%;
-    height: 100%;
-}
-
-.fundraising-page-listview {
+    width: 100vw;
+    height: 100vh;
 }
 
 .page {
-    height: 250px;
-    width: 150px;
+    background-color: #fff;
+    width: 350px;
     display: -ms-grid;
     overflow: hidden;
     -ms-grid-columns: 1fr;
     -ms-grid-rows: minmax(200, max-content) 50px;
+    transition: all 0.5s;
 }
 
 .page .page-logo {
     -ms-grid-row: 1;
+    display: -ms-grid;
+    -ms-grid-columns: 160px auto;
+    -ms-grid-rows: 1;
+    height: 160px;
 }
 
-.page .page-image {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+.page-logo img {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+}
+
+.page-logo .title {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    padding: 15px;
+    color: #000;
 }
 
 .page .page-overlay {
     -ms-grid-row: 2;
     -ms-grid-row-align: end;
     background-color: rgba(0,0,0,0.65);
-    height: 50px;
     overflow: hidden;
-    padding: 0px 10px 0px 10px;
-}
-
-.page .page-overlay .page-title {
-    margin-top: 5px;
+    padding: 0 10px 0 10px;
     color: rgb(255,255,255);
-    height: 20px;
 }
 
-.page .page-overlay .page-owner {
-    margin-top: 5px;
-    height: 20px;
-    color: rgba(255,255,255,0.49);
+.page-overlay h2{
+    display: none;
 }
 
 @media screen and (-ms-view-state: snapped) {
     #pageTilesSection {
-       width: 300px;
+        width: 90vw;
     }
 
-   .fundraising-page-listview {
-       width: 280px;
+    #fundraising-page-listview {
+        margin-top: 0;
+        margin-bottom: 30px;
+        border: 1px solid purple;
+        height: 100vh;
     }
 
     .page {
+        width: 80%;
         display: -ms-grid;
         -ms-grid-columns: 1fr;
-        -ms-grid-rows: 1fr;
-        height: 200px;
-        width: 200px;
+        -ms-grid-rows: minmax(200, max-content) auto;
     }
+
+    .page-logo {
+        display: -ms-grid;
+        -ms-grid-columns: 1fr;
+        -ms-grid-rows: auto; 
+    }
+
+    .page-logo img {
+        -ms-grid-row: 1;
+    }
+
+    .page-logo .title {
+        display: none;
+    }
+
+    .page-overlay h2 {
+        display: block;
+    }
+
 }

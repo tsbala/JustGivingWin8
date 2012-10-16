@@ -1,16 +1,14 @@
 ﻿(function() {
     "use strict";
-    var app = WinJS.Application;
-    var applicationData = Windows.Storage.ApplicationData.current;
     
     var fundraisingPage = WinJS.UI.Pages.define("/html/fundraisingpage.html", {
         ready: function (element, options) {
             var pageUrl = options;
             JustGivingWinJS.GetFundraisingPage(pageUrl)
-                .then(function (data) {
+                .done(function (data) {
                     var page = JustGivingWinJS.PageObjectFromResponse(data);
                     WinJS.Namespace.define("MediaList", imagesList(page.media.images));
-                    element.querySelector(".pageTitle").textContent = page.title;
+                    document.getElementById("pageTitle").textContent = page.title;
                     JustGivingWinJS.DisplayFundraisingPageDetails(data, 'fundraising-page', 'fundraising-page-details');
                     var imagesListView = document.getElementById('gallery-listview');
                     imagesListView.winControl.itemTemplate = imageGalleryTemplate;
@@ -92,9 +90,8 @@
             if (!donation.image) {
                 donation.image = 'facebook-avatar.gif';
             }
+            donation.AmountFormatted = JustGivingWinJS.FormatCurrency(donation.amount);
             donation.imageUrl = 'http://www.justgiving.com/content/images/graphics/icons/avatars/' + donation.image;
-            var currencyFormatter = Windows.Globalization.NumberFormatting.CurrencyFormatter("GBP");
-            donation.AmountFormatted = currencyFormatter.format(donation.amount);
             list.dataSource.insertAtEnd(null, donation);
         });
 

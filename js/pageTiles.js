@@ -2,38 +2,39 @@
 // http://go.microsoft.com/fwlink/?LinkId=232511
 (function () {
     "use strict";
+    var listView;
     WinJS.UI.Pages.define("/html/pageTiles.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
-            var listView = document.getElementById('fundraising-page-listview');
+            listView = document.getElementById('fundraising-page-listview');
             addPageEventhandler();
             pageSelectedEventHandler(listView);
             listView.winControl.itemTemplate = pageTemplateFunction;
+            window.addEventListener('resize', updateView);
+            updateView();
         },
     });
-    /*
-    window.addEventListener('resize', function(e) {
+    
+    function updateView() {
         var currentViewState = Windows.UI.ViewManagement.ApplicationView.value;
         var snapped = Windows.UI.ViewManagement.ApplicationViewState.snapped;
-        var listView = document.getElementById('fundraising-page-listview');
-        
+
         if (currentViewState === snapped) {
-            listView.layout = WinJS.UI.ListLayout();
+            listView.layout = new WinJS.UI.ListLayout();
         }
         else {
-            listView.layout = WinJS.UI.GridLayout();
+            listView.layout = new WinJS.UI.GridLayout();
         }
-    });
-    */
-    var pageTemplateFunction = function(pagePromise) {
+    }
+
+    function pageTemplateFunction(pagePromise) {
         return pagePromise.then(function (page) {
             return JustGivingWinJS.GetFundraisingPage(page.data)
-                .then(function (data) {
+                .then(
+                    function (data) {
                         return JustGivingWinJS.DisplayFundraisingPageDetails(data, "fundraising-page-tile");
-                      }, 
-                      function (error) {
-                      });
+                    });
         });
     };
     
