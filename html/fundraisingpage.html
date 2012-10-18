@@ -9,78 +9,76 @@
     <script src="/js/fundraisingpage.js"></script>
 </head>
     <body>
-        <header role="banner" style="display: -ms-grid;-ms-grid-colums:1fr;-ms-grid-rows:1fr">
+        <header role="banner" style="display: -ms-grid;-ms-grid-rows:1fr">
             <button class="win-backbutton" aria-label="Back" disabled type="button" style="-ms-grid-column: 1;margin-right: 15px"></button>
             <h1 class="win-type-ellipsis" id="pageTitle" style="-ms-grid-column: 2;-ms-grid-row-align: center; margin-top: -25px">
             </h1>
         </header>
-        <div id="fundraising-page-details"></div>
-        <div id="fundraising-page" data-win-control="WinJS.Binding.Template" style="height: 941px;">
-            <div class="templateItem">
-                <div class="panel1">
-                    <div class="mycharity">
-                        <h2 style="-ms-grid-row: 1">My Charity</h2>
-                        <div style="-ms-grid-row: 2">
-                            <div style="display: -ms-grid; -ms-grid-rows: 1fr; -ms-grid-columns: auto 1fr">
-                                <figure style="-ms-grid-column: 1; margin-left: -2px">
-                                    <img data-win-bind="src: CharityLogoUrl; alt: charity.name"/>
-                                </figure>
-                                <div style="-ms-grid-column: 2">
-                                    <p data-win-bind="innerHTML: charity.description"></p>
-                                </div>
-                            </div>
+        <div id="fundraising-page-details" />
+    </body>
+    <div id="fundraising-page" data-win-control="WinJS.Binding.Template">
+        <div class="panel1">
+            <div class="mycharity">
+                <h2 style="-ms-grid-row: 1">My Charity</h2>
+                <div style="-ms-grid-row: 2">
+                    <div style="display: -ms-grid; -ms-grid-rows: 1fr; -ms-grid-columns: auto 1fr">
+                        <figure style="-ms-grid-column: 1; margin-left: -2px">
+                            <img data-win-bind="src: CharityLogoUrl; alt: charity.name"/>
+                        </figure>
+                        <div style="-ms-grid-column: 2">
+                            <p data-win-bind="innerHTML: charity.description"></p>
                         </div>
                     </div>
-                    <div class="mystory">
-                        <h2 style="-ms-grid-row: 1">My Story</h2>
-                        <p style="-ms-grid-row: 2; overflow: hidden" data-win-bind="innerHTML: story JustGivingJS.Converters.storyHTML"></p>
-                    </div>
-                    <div class="mymedia">
-                        <h2 style="-ms-grid-row: 1">My Gallery</h2>
-                        <div id="gallery-listview" 
-                             data-win-control="WinJS.UI.ListView"
-                             data-win-options="{ itemDataSource: MediaList.Images.dataSource, tapBehavior: 'directSelect', selectionMode: 'single', layout: { type: WinJS.UI.GridLayout } }"></div>
-                    </div>
-                </div>
-                <div class="panel2">
-                    <h2 style="-ms-grid-row: 1">Donations</h2>
-                    <div id="donations-listview"
-                            data-win-control="WinJS.UI.ListView"
-                            data-win-options="{ layout: { type: WinJS.UI.ListLayout }, itemTemplate: select('#donation-template') }">
-                    </div>
-                    <div id="donations-pager">
-                        <button class="win-backbutton prev-page"></button>
-                        <div id="current-page" class="win-type-large"></div>
-                        <button class="win-commandring win-commandicon next-page">
-                            &#xE0AE;
-                        </button>
-                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div id="image-template" data-win-control="WinJS.Binding.Template">
-            <div class="imageGallery">
-                <img src="#" data-win-bind="src: absoluteUrl" />
-                <div class="image-caption win-type-ellipsis" data-win-bind="innerText: caption"></div>
+            <div class="mymedia">
+                <h2 style="-ms-grid-row: 1">My Gallery</h2>
+                <div id="gallery-listview" 
+                        data-win-control="WinJS.UI.ListView"
+                        data-win-options="{ itemDataSource: MediaList.Images.dataSource, tapBehavior: 'directSelect', selectionMode: 'single', layout: { type: WinJS.UI.GridLayout } }"></div>
+            </div>
+            <div class="mystory">
+                <h2 style="-ms-grid-row: 1">My Story</h2>
+                <div class="story" data-win-bind="innerHTML: story JustGivingJS.Converters.storyHTML"></div>
             </div>
         </div>
-        
-        <div id="donation-template" data-win-control="WinJS.Binding.Template">
-             <div class="donationItem">
-                 <div class="avatar">
-                    <img src='#' data-win-bind="src: imageUrl" ></img>
-                 </div>
-                 <div class="details">
-                     <div data-win-bind="innerText: message"></div>
-                     <div class="donatedBy">
-                         <span data-win-bind="innerText: donorDisplayName"></span> <span>on</span> <span data-win-bind="innerText: DonationDate"></span>
-                     </div>
-                 </div>
-                 <div class="amount">
-                     <span data-win-bind="innerText: AmountFormatted"></span>
-                 </div>
-             </div>
+        <div class="panel2">
+            <h2 style="-ms-grid-row: 1">Donations</h2>
+            <div id="donations-listview"
+                    data-win-control="WinJS.UI.ListView"
+                    data-win-options="{ layout: { type: WinJS.UI.ListLayout }, itemTemplate: select('#donation-template') }">
+            </div>
+            <div id="donations-pager">
+                <button class="win-backbutton prev-page"></button>
+                <div id="current-page" class="win-type-large"></div>
+                <button class="win-commandring win-commandicon next-page">
+                    &#xE0AE;
+                </button>
+            </div>
         </div>
-    </body>
+    </div>
+    <div id="image-template" data-win-control="WinJS.Binding.Template">
+        <div class="imageGallery">
+            <img src="#" data-win-bind="src: absoluteUrl" />
+            <div class="image-caption win-type-ellipsis" data-win-bind="innerText: caption"></div>
+        </div>
+    </div>
+        
+    <div id="donation-template" data-win-control="WinJS.Binding.Template">
+            <div class="donationItem">
+                <div class="avatar">
+                <img src='#' data-win-bind="src: imageUrl" ></img>
+                </div>
+                <div class="details">
+                    <div data-win-bind="innerText: message"></div>
+                    <div class="donatedBy">
+                        <span data-win-bind="innerText: donorDisplayName"></span> <span>on</span> <span data-win-bind="innerText: DonationDate"></span>
+                    </div>
+                </div>
+                <div class="amount">
+                    <span data-win-bind="innerText: AmountFormatted"></span>
+                </div>
+            </div>
+    </div>
+
 </html>

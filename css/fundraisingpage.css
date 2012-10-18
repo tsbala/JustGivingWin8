@@ -1,51 +1,50 @@
-﻿.templateItem {
-    display: -ms-grid;
-    -ms-grid-rows: auto;
-    -ms-grid-columns: 1fr 1fr;
+﻿#fundraising-page-details {
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    -ms-flex-wrap: wrap;
+    overflow: auto;
 }
 
-.templateItem h2 {
+#fundraising-page-details h2 {
     font-size: 100%;
     font-weight: bold;
     padding-bottom: 12px;
     border-bottom: 3px solid crimson;
 }
 
-.templateItem .panel1 {
-    -ms-grid-column: 1;
-    display: -ms-grid;
-    -ms-grid-rows: auto;
-    -ms-grid-columns: 1fr;
-    padding: 0px 5px;
+.panel1 {
+    -ms-flex: 0 0 70%;
+    -ms-flex-order: 0;
+    overflow: auto;
 }
 
-.templateItem .panel2 {
-    -ms-grid-column: 2;
-    height: auto; 
+.panel2 {
+    -ms-flex: 5 1 auto;
     display: -ms-grid;
     -ms-grid-rows: 33px 60px auto;
     -ms-grid-columns: 1fr;
-    padding: 0px 5px;
+    padding: 0 5px;
 }
 
-.templateItem .panel1 .mycharity {
-    -ms-grid-row: 1;
+.panel1 .mycharity {
     display: -ms-grid;
     -ms-grid-rows: 2fr;
     -ms-grid-columns: 1fr;
     width: 100%;
 }
 
-.templateItem .panel1 .mystory{
-    -ms-grid-row: 2;
-    display: -ms-grid;
-    -ms-grid-rows: 1fr 200px;
-    -ms-grid-columns: auto;
-    width: 100%;
+@media screen and (-ms-view-state: snapped) {
+    .panel1 {
+        display: none;
+    }
 }
 
-.templateItem .panel1 .mymedia{
-    -ms-grid-row: 3;
+.panel1 .mystory{
+    height: 400px;
+    overflow: auto;
+}
+
+.panel1 .mymedia{
 }
 
 #gallery-listview {
@@ -72,35 +71,42 @@
     overflow: hidden;
     padding: 0px 5px 0px 5px;
 }
-.templateItem .panel2 #donations-pager {
+
+.panel2 #donations-pager {
     -ms-grid-row: 2;
     -ms-grid-row-align: center;
     -ms-grid-column-align: center;
-    display: -ms-grid;
-    -ms-grid-rows: 1fr;
-    -ms-grid-columns: 50px auto 77px;
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    -ms-flex-wrap: wrap;
 }
 
-.templateItem .panel2 #donations-pager #current-page{
-    -ms-grid-column: 2;
-    -ms-grid-row-align: center;
-    -ms-grid-column-align: center;
+.panel2 #donations-pager #current-page{
+    -ms-flex-order: 1;
+    text-align: justify;
+}
+
+.story {
+    -ms-grid-row: 2; 
+    columns: 3; 
+    column-rule-style: dotted; 
+    column-rule-color: gray; 
+    column-rule-width: 1px;
+    text-align: justify;    
 }
 
 .templateItem .panel2 #donations-pager .prev-page {
-    -ms-grid-column: 1;
     color: crimson;
+    -ms-flex-order: 0;
 }
 
-.templateItem .panel2 #donations-pager .next-page {
-    -ms-grid-column: 3;
-    -ms-grid-column-align: end;
-    -ms-grid-row-align: center;
+.panel2 #donations-pager .next-page {
+    -ms-flex-order: 2;
     font-size: 14pt;
     color: crimson;
 }
 
-.templateItem .panel2 #donations-listview {
+.panel2 #donations-listview {
     -ms-grid-row: 3;
 }
 
@@ -108,36 +114,36 @@
     height: 600px;
 }
 
-.templateItem .panel2 .donationItem {
+.panel2 .donationItem {
     display: -ms-grid;
     -ms-grid-columns: 60px 1fr 60px;
     -ms-grid-rows: 1fr;
     padding: 5px 0px;
 }
 
-.templateItem .panel2 .donationItem .avatar {
+.panel2 .donationItem .avatar {
     -ms-grid-column: 1;
     padding: 5px;
 }
 
-.templateItem .panel2 .donationItem .avatar img {
+.panel2 .donationItem .avatar img {
     background-color: maroon;
     width: 50px;
     height: 50px;
 }
 
-.templateItem .panel2 .donationItem .details {
+.panel2 .donationItem .details {
     -ms-grid-column: 2;
     padding-left: 5px;
 }
 
-.templateItem .panel2 .donationItem .details .donatedBy {
+.panel2 .donationItem .details .donatedBy {
     font-size: 75%;
     padding-top: 20px;
 }
 
 
-.templateItem .panel2 .donationItem .amount {
+.panel2 .donationItem .amount {
     text-align: right; 
     -ms-grid-column: 3;
 }

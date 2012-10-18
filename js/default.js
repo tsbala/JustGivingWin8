@@ -36,5 +36,10 @@
         JustGivingWinJS.RecentPages.SaveToRoamingData();
     };
 
+
+    app.onerror = function(event) {
+        var x = event;
+        return true;
+    };
     app.start();
 })();
